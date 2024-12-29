@@ -5,4 +5,21 @@
 {% block content %}
 <h1>Добро пожаловать на наш сайт!</h1>
 <p>Это простой сайт, созданный с помощью Flask.</p>
+
+<div class="upload-section">
+    <h2>Загрузка файлов</h2>
+    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Загрузить файл">
+    </form>
+</div>
+
+<div class="files-section">
+    <h2>Загруженные файлы:</h2>
+    <ul>
+    {% for file in files %}
+        <li>{{ file }}</li>
+    {% endfor %}
+    </ul>
+</div>
 {% endblock %} 
